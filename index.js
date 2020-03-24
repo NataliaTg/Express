@@ -61,7 +61,7 @@ app.get('/api/movies/', (request, response) => {
 app.get('/api/movies/names', (request, response) => {
 
   // connection to the database, and selection of movies
-  company.query('SELECT * from movie', (error, results) => {
+  company.query('SELECT name from movie', (error, results) => {
 
     if (error) {
       //  If an error has occurred, then the user is informed of the error
@@ -70,7 +70,7 @@ app.get('/api/movies/names', (request, response) => {
     } else {
       // If everything went well, we send the result of the SQL query as JSON.
       console.log('Nombres mostrados correctamente');
-      response.send({ name: '<name>' })
+      response.send(results)
     }
   })
 })
